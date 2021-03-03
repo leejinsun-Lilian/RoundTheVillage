@@ -13,7 +13,7 @@ public class PageInfo2 {
 	private int startPage;	 	// 페이징바 시작 페이지 번호
 	private int endPage; 	 	// 페이징바 끝 페이지 번호
 	
-	private int noticeNo; 		// 게시글 타입
+	private int boardType; 		// 게시글 타입
 	
 	public PageInfo2() {}
 	
@@ -26,21 +26,21 @@ public class PageInfo2 {
 	}
 	
 
-	public int getNoticeNo() {
-		return	noticeNo;
+	public int getBoardType() {
+		return boardType;
 	}
 
-	public void setNoticeNo(int noticeNo) {
-		this.noticeNo = noticeNo;
+	public void setBoardType(int boardType) {
+		this.boardType = boardType;
 	}
 
-	public PageInfo2(int currentPage, int listCount, int limit, int pagingBarSize, int noticeNo) {
+	public PageInfo2(int currentPage, int listCount, int limit, int pagingBarSize, int boardType) {
 		super();
 		this.currentPage = currentPage;
 		this.listCount = listCount;
 		this.limit = limit;
 		this.pageSize = pagingBarSize;
-		this.noticeNo = noticeNo;
+		this.boardType = boardType;
 		
 		makePageInfo();
 	}
@@ -101,7 +101,7 @@ public class PageInfo2 {
 	public String toString() {
 		return "PageInfo [currentPage=" + currentPage + ", listCount=" + listCount + ", limit=" + limit
 				+ ", pageSize=" + pageSize + ", maxPage=" + maxPage + ", startPage=" + startPage
-				+ ", endPage=" + endPage + ", noticeNo=" + noticeNo + "]";
+				+ ", endPage=" + endPage + ", boardType=" + boardType + "]";
 	}
 
 	// 페이징 처리에 필요한 값을 계산하는 메소드.

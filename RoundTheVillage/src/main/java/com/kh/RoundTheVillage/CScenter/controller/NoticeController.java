@@ -67,7 +67,10 @@ public class NoticeController {
 		
 		if (notice != null) { // 상세조회성공
 			
+			System.out.println("notice:" + notice);
+			
 			List<Attachment> attachmentList = service.selectAttachmentList(noticeNo);
+			System.out.println("noticeNo:" + noticeNo);
 
 			if (attachmentList != null && !attachmentList.isEmpty()) { // 조회된 이미지 목록이 있을 경우
 				model.addAttribute("attachmentList", attachmentList);
@@ -79,7 +82,7 @@ public class NoticeController {
 			
 		} else { // 이전 요청 주소가 없는 경우
 			if (referer == null) {
-				url = "redirect:../noticeList";
+				url = "redirect:../noticeList/";
 
 			} else {
 				url = "redirect:" + referer;
@@ -106,8 +109,10 @@ public class NoticeController {
 		
 		
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("noticeNo", notice.getNoticeNo());
 		map.put("noticeTitle", notice.getNoticeTitle());
 		map.put("noticeContent", notice.getNoticeContent());
+
 		
 		String savePath = null;
 		
@@ -124,12 +129,12 @@ public class NoticeController {
 			swalTitle = "게시글 등록 성공";
 			url = "redirect:" + result;
 
-			request.getSession().setAttribute("returnListURL", "noticeList");
+			request.getSession().setAttribute("returnListURL", "../list");
 
 		} else {
 			swalIcon = "error";
 			swalTitle = "게시글 삽입 실패";
-			url = "redirect:noticeInsert";
+			url = "redirect:insert";
 		}
 
 		ra.addFlashAttribute("swalIcon", swalIcon);

@@ -83,6 +83,31 @@
 
 				<hr class="nline">
 
+				
+				<!-- 이미지 부분 -->
+                <c:if test="${!empty attachmentList}">
+                
+					<div class="carousel slide m-3" id="carousel-325626">
+	                    
+	                    <div class="carousel-inner boardImgArea">
+	                    
+		                    <c:forEach var="at" items="${attachmentList}" varStatus="vs">
+	                    		<c:set var="src" value="${contextPath}${at.filePath}/${at.fileName}"/> <!-- "/"가 부족해서 추가 -->
+	                    		
+		                        <div class="carousel-item <c:if test="${vs.index == 0}"> active</c:if>">
+		                            <img class="d-block w-100 boardImg" src="${src}" />
+		                            <input type="hidden" value="${at.fileNo}">
+		                        </div>
+	                        </c:forEach>
+	                        
+	                    </div> 
+	                    
+	                    <a class="carousel-control-prev" href="#carousel-325626" data-slide="prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carousel-325626" data-slide="next">
+	                    <span class="carousel-control-next-icon"></span> 
+	                    <span class="sr-only">Next</span></a>
+	                </div>
+                </c:if>
+				
 
 				<!-- Content -->
 				<div id="board-content">
@@ -98,29 +123,14 @@
 				<div>
 					<div class="float-right">
 					
-						<c:choose>
-						<c:when test="${!empty param.sk && !empty param.sv}">
-							<c:url var="goToList" value="noticeList">
-							<c:param name="cp">${param.cp}</c:param>
-							<c:param name="sk">${param.sk}</c:param>
-							<c:param name="sv">${param.sv}</c:param>
-							</c:url>
-						</c:when>
-						
-						<c:otherwise>
-							<c:url var="goToList" value="noticeList">
-								<c:param name="cp">${param.cp}</c:param>
-							</c:url>
-						</c:otherwise>
-						
-					</c:choose>
-					
-					
-					<a href="${goToList}" class="btn btn-primary float-right">목록으로</a>
-	        <div>
-	        ${pInfo.currentPage} 
-	        ${param.cp}   
-	        </div>    	
+						<%-- 북마크나 주소로 인한 직접 접근 시 목록으로 버튼 경로 지정 --%>
+						<c:if test="${empty sessionScope.returnListURL}">
+							<c:set var="returnListURL" value="../list/${notice}" scope="session"/>
+						</c:if>
+						<a class="btn btn-warning" id="back" href="${sessionScope.returnListURL}">목록으로</a>
+	                	
+	                	<c:url var="updateUrl" value="${notice.noticeNo}/update" />
+	                	
 	                	<!-- 로그인된 회원이 글 작성자인 경우 -->
 					<%-- 	<c:if test="${(loginMember != null) && (member.memberType == 'A')}"> --%>
 							<a href="${updateUrl}" class="btn btn-warning ml-1 mr-1" id="updateBtn">수정</a>
