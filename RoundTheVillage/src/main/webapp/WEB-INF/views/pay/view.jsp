@@ -15,15 +15,15 @@
     <div class="row p-3 bg-light rounded mb-5">
         <div class="col-md-12 py-4">
             <div class="d-flex justify-content-between bb">
-                <a href="#" class="">결제 번호: ${pay.payNo}</a>
+                <span>결제 번호: ${pay.payNo}</span>
                 <span class=""><fmt:formatDate pattern="yyyy-MM-dd" value="${pay.payDate}"/></span>
             </div>
             <div class="d-flex justify-content-left py-4 mb-5 bb">
                 <img src="${contextPath}/resources/images/lesson/${pay.fileName}" class="rounded img-responsive w-25">
                 <div class="p-3">
-                    <h4 class="">${pay.lesTitle}</h4>
-                    <span class="">${pay.craftshopName}</span> |
-                    <span class="">${pay.lesCategory}</span>
+                    <h4>${pay.lesTitle}</h4>
+                    <span>${pay.craftshopName}</span> |
+                    <span>${pay.lesCategory}</span>
                     
                     <div class="row pt-4 d-block">
 	                    <span class="font-weight-bold col-md-6">예약 날짜</span>
