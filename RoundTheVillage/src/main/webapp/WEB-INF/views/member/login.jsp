@@ -60,7 +60,7 @@
 
 				<!-- 카카오계정 로그인 -->
 				<div id="kakao_id_login" style="text-align: center"> 
-					<a href="https://kauth.kakao.com/oauth/authorize?client_id=3c56b25609c3861587b904b7f8db4860&redirect_uri=http://localhost:8080/RoundTheVillage/kakaoLogin&response_type=code"> 
+					<a href="https://kauth.kakao.com/oauth/authorize?client_id=3c56b25609c3861587b904b7f8db4860&redirect_uri=http://localhost:8082/RoundTheVillage/kakaoLogin&response_type=code"> 
 						<img class="sns-btn kakaoBtn" src="${contextPath}/resources/images/member/kakaoLogin.png" />
 					</a> 
 				</div>
